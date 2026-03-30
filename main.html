@@ -1,1 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Sukh Healthcare | Premium Store</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display & Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           ULTRA-LUXURY E-COMMERCE THEME
+           Image-Rich Storefront Design
+           ========================================= */
+        :root {
+            --color-bg-base: #FDFBF7;    
+            --color-brand: #1A362D;      /* Deep Forest Green */
+            --color-gold: #D4AF37;       
+            --color-premium-gold: #C5A059; 
+            --color-text: #2C3531;       
+            --color-glass: rgba(253, 251, 247, 0.95);
+            --color-card-bg: #FFFFFF;
+        }
 
+        /* Base scaling for perfect responsiveness */
+        html {
+            font-size: 16px; 
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: var(--color-bg-base);
+            font-family: 'Lato', sans-serif;
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           HEADER & NAVBAR (ULTRA PRO MAX)
+           ========================================= */
+        .header-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        /* Top Announcement Bar */
+        .top-bar {
+            background-color: var(--color-brand);
+            color: var(--color-premium-gold);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+            overflow: hidden;
+        }
+
+        .header-wrapper.scrolled .top-bar {
+            height: 0;
+            opacity: 0;
+        }
+
+        /* Main Navbar */
+        .navbar {
+            background: var(--color-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 54, 45, 0.08);
+            padding: 1.25rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .header-wrapper.scrolled .navbar {
+            padding: 0.8rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--color-brand);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--color-premium-gold);
+        }
+
+        /* Brand Logo */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .nav-logo-icon {
+            color: var(--color-premium-gold);
+            font-size: 1.8rem;
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-brand);
+            letter-spacing: 0.05em;
+        }
+
+        /* Center Desktop Links */
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background-color: var(--color-premium-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-premium-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Right Actions */
+        .nav-actions {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--color-brand);
+            font-size: 1.3rem;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            color: var(--color-premium-gold);
+            transform: translateY(-2px);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px; right: -8px;
+            background: var(--color-premium-gold);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            width: 18px; height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(197, 160, 89, 0.4);
+        }
+
+        /* --- Mobile Centered Sidebar --- */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 54, 45, 0.7); /* Deep brand overlay */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sidebar {
+            background: var(--color-bg-base);
+            width: 300px;
+            max-width: 90vw;
+            height: auto;
+            max-height: 85vh;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-overlay.active .sidebar {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-sidebar-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-sidebar-btn:hover {
+            color: var(--color-premium-gold);
+        }
+
+        .sidebar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--color-brand);
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(26, 54, 45, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .sidebar-links a:hover {
+            color: var(--color-premium-gold);
+        }
+        
+        .sidebar-footer {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(26, 54, 45, 0.1);
+        }
+        
+        .sidebar-footer a {
+            color: var(--color-brand);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .sidebar-footer a:hover {
+            color: var(--color-premium-gold);
+        }
+
+        /* --- Attractive Image Slider Hero --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 21 / 9; 
+            overflow: hidden;
+            background: #E8F0E8;
+            margin-top: 100px; /* Accounts for new header height */
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease-out;
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .dot.active {
+            background: var(--color-premium-gold);
+            transform: scale(1.3);
+            box-shadow: 0 2px 6px rgba(197, 160, 89, 0.5);
+        }
+
+        /* --- Luxury Product Grid & Categories --- */
+        .store-section {
+            padding: 5rem 0 6rem 0;
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-premium-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--color-brand);
+        }
+
+        /* Category Filter Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .cat-tab {
+            background: none;
+            border: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text);
+            opacity: 0.5;
+            cursor: pointer;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cat-tab.active, .cat-tab:hover {
+            opacity: 1;
+            color: var(--color-brand);
+            border-bottom-color: var(--color-premium-gold);
+        }
+
+        .store-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 4rem 2.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        /* =========================================
+           2026 MODERN PREMIUM CARDS 
+           Floating UI & Clean Asymmetry
+           ========================================= */
+        .product-card {
+            background: transparent;
+            border-radius: 0;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .product-image-area {
+            height: 360px;
+            position: relative;
+            border-radius: 28px; /* Ultra-round modern corners */
+            overflow: hidden;
+            background: #E8F0E8;
+            box-shadow: 0 10px 30px rgba(26, 54, 45, 0.05);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+        }
+
+        /* Subtle dark gradient at bottom so icons pop */
+        .product-image-area::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .product-card:hover .product-image-area {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(26, 54, 45, 0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Floating Category Tag (Glassmorphism) */
+        .product-category-tag {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--color-brand);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Modern 2026 Hover Pill Button */
+        .quick-add-btn {
+            position: absolute;
+            bottom: 1.2rem;
+            right: 1.2rem;
+            height: 48px;
+            width: 48px;
+            background: var(--color-brand);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            box-shadow: 0 8px 20px rgba(26, 54, 45, 0.25);
+        }
+
+        .product-card:hover .quick-add-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Expands on hover into a pill */
+        .quick-add-btn:hover {
+            background: var(--color-premium-gold);
+            width: 140px; 
+        }
+
+        .quick-add-btn i {
+            min-width: 48px;
+            display: flex;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .quick-add-btn span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .quick-add-btn:hover span {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Clean Asymmetrical Info Area */
+        .product-info {
+            padding: 1.5rem 0.5rem 0.5rem;
+            text-align: left;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-brand);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .product-card:hover .product-title {
+            color: var(--color-premium-gold);
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: rgba(44, 53, 49, 0.7);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Truncate modernly */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-brand);
+        }
+
+        /* =========================================
+           FOOTER (ULTRA PRO MAX LUXURY)
+           ========================================= */
+        .store-footer {
+            background: var(--color-brand);
+            color: #fff;
+            padding: 6rem 4rem 2rem;
+            position: relative;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 4rem;
+        }
+
+        .brand-col .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-premium-gold);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 320px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-links a {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(197, 160, 89, 0.4); 
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-premium-gold); 
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--color-premium-gold);
+            z-index: -1;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 50%;
+        }
+
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+
+        .social-links a:hover {
+            color: var(--color-brand); 
+            border-color: var(--color-premium-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--color-premium-gold);
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #fff;
+            opacity: 0.7;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--color-premium-gold);
+            transform: translateX(5px);
+        }
+
+        .newsletter-col p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form:focus-within {
+            border-color: var(--color-premium-gold);
+        }
+
+        .newsletter-form input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .newsletter-form button {
+            background: transparent;
+            border: none;
+            color: var(--color-premium-gold);
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .footer-legal a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-legal a:hover {
+            opacity: 1;
+            color: var(--color-premium-gold);
+        }
+
+        /* --- Toast Notification --- */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-brand);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast.show {
+            bottom: 40px;
+        }
+
+        /* =========================================
+           RESPONSIVE PERFECTION
+           ========================================= */
+        
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; } 
+            .mobile-menu-btn { display: block; } 
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 640px) {
+            html { font-size: 13.5px; }
+            .navbar { padding: 1rem 1.5rem; }
+            .header-wrapper.scrolled .navbar { padding: 0.8rem 1.5rem; }
+            .top-bar { font-size: 0.65rem; padding: 0 10px; }
+            
+            .nav-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .nav-title { display: none; } 
+            .nav-logo-icon { font-size: 2rem; }
+            
+            .action-btn.search-btn, .action-btn.user-btn { display: none; } 
+
+            .slider-container { margin-top: 90px; }
+            .store-container { padding: 0 1.25rem; }
+            
+            /* --- CUTE, ATTRACTIVE & MODERN MOBILE CARDS --- */
+            .product-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 2rem 1rem; /* 2 Column layout */
+            }
+            .product-card:hover .product-image-area {
+                transform: none; /* Disable hover float on touch */
+                box-shadow: 0 10px 30px rgba(26, 54, 45, 0.05);
+            }
+            .product-image-area { 
+                height: 200px; /* Aesthetic height for mobile */
+                border-radius: 20px;
+            }
+            .product-category-tag {
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.35rem 0.6rem;
+                font-size: 0.55rem;
+                letter-spacing: 0.1em;
+            }
+            /* Add button always visible on mobile, simple cute circle */
+            .quick-add-btn {
+                opacity: 1; 
+                transform: translateY(0);
+                bottom: 0.75rem;
+                right: 0.75rem;
+                width: 36px;
+                height: 36px;
+                box-shadow: 0 5px 15px rgba(26, 54, 45, 0.3);
+            }
+            .quick-add-btn i {
+                min-width: 36px;
+                font-size: 0.9rem;
+            }
+            .quick-add-btn:hover {
+                width: 36px; /* Don't expand on mobile */
+                background: var(--color-premium-gold);
+            }
+            .quick-add-btn span {
+                display: none; /* Hide text on mobile */
+            }
+
+            .product-info { 
+                padding: 1rem 0.25rem 0; 
+            }
+            .product-title { 
+                font-size: 1.05rem; 
+                margin-bottom: 0.25rem;
+            }
+            .product-desc { 
+                display: none; /* Hidden on mobile to keep clean minimalist look */
+            }
+            .product-price { 
+                font-size: 0.95rem; 
+            }
+
+            /* --- Horizontal scrolling Category Tabs on Mobile --- */
+            .category-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 0 1.25rem 0.5rem 1.25rem;
+                margin: 0 -1.25rem 2.5rem -1.25rem; 
+                gap: 1.5rem;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .category-tabs::-webkit-scrollbar { display: none; }
+            .cat-tab { white-space: nowrap; font-size: 0.8rem; }
+            
+            /* Footer adjustments */
+            .store-footer { padding: 4rem 2rem 2rem; }
+            .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+            .brand-col { text-align: center; }
+            .brand-col .footer-logo { justify-content: center; }
+            .footer-desc { margin: 0 auto 1.5rem; }
+            .social-links { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-legal a { margin: 0 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ultra Premium Header Wrapper -->
+    <header class="header-wrapper" id="headerWrapper">
+        <!-- Top Announcement Bar -->
+        <div class="top-bar">
+            <span>Free Express Delivery on Orders Over $150 &nbsp; | &nbsp; 100% Certified Organic</span>
+        </div>
+
+        <!-- Elegant Navbar -->
+        <nav class="navbar">
+            <!-- Mobile Hamburger -->
+            <button class="mobile-menu-btn" id="openSidebarBtn"><i class="fa-solid fa-bars-staggered"></i></button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="nav-brand">
+                <i class="fa-solid fa-leaf nav-logo-icon"></i>
+                <span class="nav-title">Sukh</span>
+            </a>
+
+            <!-- Desktop Centered Links -->
+            <div class="nav-links">
+                <a href="#" class="nav-link">Apothecary <i class="fa-solid fa-angle-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+                <a href="#" class="nav-link">Skincare</a>
+                <a href="#" class="nav-link">Philosophy</a>
+                <a href="#" class="nav-link">Journal</a>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="nav-actions">
+                <button class="action-btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="action-btn user-btn"><i class="fa-regular fa-user"></i></button>
+                <button class="action-btn" onclick="openCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Centered Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay">
+        <div class="sidebar" id="sidebar">
+            <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-leaf" style="color: var(--color-premium-gold);"></i> Sukh
+            </div>
+            
+            <div class="sidebar-links">
+                <a href="#">Apothecary</a>
+                <a href="#">Skincare</a>
+                <a href="#">Philosophy</a>
+                <a href="#">Journal</a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <a href="#">Login / Register</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attractive Image Slider Hero (Unified Perfect Ratio, No Text) -->
+    <section class="slider-container" id="heroSlider">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Spa and Wellness">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Natural Herbs">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Luxury Skincare">
+        </div>
+
+        <!-- Dots -->
+        <div class="slider-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+    </section>
+
+    <!-- Main Storefront Grid -->
+    <main class="store-section" id="store">
+        <div class="section-header">
+            <div class="section-subtitle">Apothecary</div>
+            <h2 class="section-title">Classical Remedies</h2>
+        </div>
+
+        <!-- 5 Categories Tab Filter -->
+        <div class="category-tabs" id="categoryTabs">
+            <button class="cat-tab active" onclick="filterCategory('All')">All Collection</button>
+            <button class="cat-tab" onclick="filterCategory('Vitality')">Vitality</button>
+            <button class="cat-tab" onclick="filterCategory('Recovery')">Recovery</button>
+            <button class="cat-tab" onclick="filterCategory('Immunity')">Immunity</button>
+            <button class="cat-tab" onclick="filterCategory('Balance')">Balance</button>
+            <button class="cat-tab" onclick="filterCategory('Restoration')">Restoration</button>
+        </div>
+        
+        <div class="store-container">
+            <div class="product-grid" id="productGrid">
+                <!-- Products with modern UI will be injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Multi-Column Luxury Footer -->
+    <footer class="store-footer">
+        <div class="footer-top">
+            <!-- Brand Info Column -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-leaf"></i> Sukh
+                </div>
+                <p class="footer-desc">Crafting pure, botanical wellness through ancient wisdom and modern science. Elevate your daily rituals.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <!-- Shop Links -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="#">Apothecary</a>
+                <a href="#">Skin & Body</a>
+                <a href="#">Teas & Tisanes</a>
+                <a href="#">Exquisite Gifting</a>
+            </div>
+
+            <!-- About Links -->
+            <div class="footer-col">
+                <h4>About</h4>
+                <a href="#">Our Philosophy</a>
+                <a href="#">Rare Ingredients</a>
+                <a href="#">Sustainability</a>
+                <a href="#">The Journal</a>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col newsletter-col">
+                <h4>The Society</h4>
+                <p>Subscribe to receive holistic wellness insights, exclusive previews, and special privileges.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to the newsletter successfully!');">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sukh Healthcare. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Shipping Returns</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastMsg">
+        <i class="fa-solid fa-check-circle" style="color: var(--color-premium-gold);"></i>
+        <span>Item added to your bag</span>
+    </div>
+
+    <script>
+        // --- Header Scroll Logic ---
+        window.addEventListener('scroll', () => {
+            const headerWrapper = document.getElementById('headerWrapper');
+            if(window.scrollY > 40) {
+                headerWrapper.classList.add('scrolled');
+            } else {
+                headerWrapper.classList.remove('scrolled');
+            }
+        });
+
+        // --- Mobile Sidebar Logic ---
+        const openSidebarBtn = document.getElementById('openSidebarBtn');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeSidebar() {
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if(openSidebarBtn) openSidebarBtn.addEventListener('click', openSidebar);
+        if(closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        
+        if(sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', (e) => {
+                if(e.target === sidebarOverlay) closeSidebar();
+            });
+        }
+
+        // --- Slider Logic ---
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        resetInterval();
+
+        // --- Premium Product Database grouped into 5 Main Categories ---
+        const products = [
+            {
+                id: 1, category: "Vitality", name: "Ashwagandha Extract",
+                desc: "Adaptogenic herb to manage stress and promote calm, sustained energy.", price: "$45.00",
+                image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2, category: "Vitality", name: "Pure Shilajit Resin",
+                desc: "Mineral-rich organic resin sourced from high altitudes for deep stamina.", price: "$85.00",
+                image: "https://images.unsplash.com/photo-1599305090598-fe179d501227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3, category: "Recovery", name: "Turmeric Curcumin Oil",
+                desc: "Enhanced with black pepper extract for maximum absorption and joint relief.", price: "$38.00",
+                image: "https://images.unsplash.com/photo-1608280655458-9de5e78ddac2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4, category: "Recovery", name: "Triphala Herbal Blend",
+                desc: "Classical digestive tonic to gently cleanse and rejuvenate the body.", price: "$32.00",
+                image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5, category: "Immunity", name: "Amla Vitamin C Drops",
+                desc: "Cold-pressed Indian gooseberry for a potent, natural antioxidant boost.", price: "$28.00",
+                image: "https://images.unsplash.com/photo-1585232004423-244e0e6904e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6, category: "Immunity", name: "Tulsi Holy Basil",
+                desc: "Soothes the respiratory tract and strengthens your immune response.", price: "$25.00",
+                image: "https://images.unsplash.com/photo-1590439471364-192aa70c0b53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 7, category: "Balance", name: "Brahmi Mind Serum",
+                desc: "Nourishes the nervous system and supports ultimate mental clarity.", price: "$42.00",
+                image: "https://images.unsplash.com/photo-1615397323861-5be6ba1d6a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 8, category: "Balance", name: "Shatavari Essence",
+                desc: "Traditional formulation supporting women's natural hormonal harmony.", price: "$40.00",
+                image: "https://images.unsplash.com/photo-1608248593842-8010bc19e53b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 9, category: "Restoration", name: "Moringa Superfood",
+                desc: "Finely milled vibrant leaves providing essential vitamins and minerals.", price: "$35.00",
+                image: "https://images.unsplash.com/photo-1615486171448-4e891040378f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 10, category: "Restoration", name: "Deep Sleep Ritual Oil",
+                desc: "A calming blend of essential oils to promote deep, restorative sleep.", price: "$55.00",
+                image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        let cartTotal = 0;
+        let activeCategory = 'All';
+
+        // --- Render 2026 Modern Premium Products ---
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.style.opacity = '0'; 
+            
+            setTimeout(() => {
+                grid.innerHTML = '';
+                
+                const filteredProducts = activeCategory === 'All' 
+                    ? products 
+                    : products.filter(p => p.category === activeCategory);
+
+                filteredProducts.forEach(product => {
+                    const card = document.createElement('article');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image-area">
+                            <div class="product-category-tag">${product.category}</div>
+                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                            <button class="quick-add-btn" onclick="addToCart('${product.name}')">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add to Bag</span>
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">${product.name}</h2>
+                            <p class="product-desc">${product.desc}</p>
+                            <div class="product-price">${product.price}</div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                
+                grid.style.opacity = '1';
+            }, 200);
+        }
+
+        // --- Filter Category Logic ---
+        function filterCategory(categoryName) {
+            activeCategory = categoryName;
+            
+            // Update active styling on tabs
+            document.querySelectorAll('.cat-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.innerText.includes(categoryName)) {
+                    tab.classList.add('active');
+                } else if (categoryName === 'All' && tab.innerText === 'All Collection') {
+                    tab.classList.add('active');
+                }
+            });
+            
+            renderProducts();
+        }
+
+        // --- Add to Cart Logic ---
+        function addToCart(productName) {
+            cartTotal++;
+            document.getElementById('cartCount').innerText = cartTotal;
+            
+            const toast = document.getElementById('toastMsg');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function openCart() {
+            alert("Cart feature opening soon in this boutique experience.");
+        }
+
+        // Initialize store
+        window.onload = renderProducts;
+
+    </script>
+</body>
+</html>
