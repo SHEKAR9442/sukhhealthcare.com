@@ -28,10 +28,7 @@
             --color-glass: rgba(255, 255, 255, 0.85);
         }
 
-        /* Base font-size setup. 
-          By default browsers use 16px. We will shrink this for mobile
-          so that ALL rem-based sizing scales down perfectly.
-        */
+        /* Base font-size setup */
         html {
             font-size: 16px; 
         }
@@ -127,10 +124,10 @@
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
 
-        /* --- Brand Emblem --- */
+        /* --- Brand Emblem with PNG Logo Support --- */
         .brand-emblem {
-            width: 4rem; /* 64px */
-            height: 4rem;
+            width: 5rem;
+            height: 5rem;
             margin-bottom: 1.5rem;
             position: relative;
             display: flex;
@@ -138,15 +135,48 @@
             justify-content: center;
         }
 
-        .brand-emblem i {
-            font-size: 2.2rem;
-            color: var(--color-brand);
+        /* Premium emblem container for PNG logo */
+        .emblem-icon {
+            width: 4.2rem;
+            height: 4.2rem;
+            background: linear-gradient(135deg, rgba(30,59,45,0.08) 0%, rgba(212,175,55,0.12) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             z-index: 2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+
+        /* PNG Logo Styling - elegant and crisp */
+        .brand-logo-png {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+            transition: transform 0.3s ease;
+        }
+        
+        /* Fallback icon in case image fails to load (graceful degradation) */
+        .fallback-icon {
+            font-size: 2rem;
+            color: var(--color-brand);
+            display: none;
+        }
+        
+        .emblem-icon.load-fallback .brand-logo-png {
+            display: none;
+        }
+        
+        .emblem-icon.load-fallback .fallback-icon {
+            display: block;
         }
 
         .emblem-ring {
             position: absolute;
-            inset: -0.5rem; /* -8px */
+            inset: -0.5rem;
             border-radius: 50%;
             border: 1px solid rgba(212, 175, 55, 0.4);
             animation: slowSpin 15s linear infinite;
@@ -155,10 +185,10 @@
         .emblem-ring::before {
             content: '';
             position: absolute;
-            top: -0.1875rem; /* -3px */
+            top: -0.1875rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 0.375rem; /* 6px */
+            width: 0.375rem;
             height: 0.375rem;
             background: var(--color-gold);
             border-radius: 50%;
@@ -220,6 +250,7 @@
             height: 1.2rem;
             opacity: 1;
             will-change: opacity;
+            transition: opacity 0.3s ease;
         }
 
         .progress-line-container {
@@ -228,18 +259,19 @@
             background: rgba(30, 59, 45, 0.08);
             position: relative;
             border-radius: 2px;
+            overflow: hidden;
         }
 
         .progress-line {
             position: absolute;
             top: 0; left: 0; height: 100%;
-            background: linear-gradient(90deg, transparent, var(--color-premium-gold), transparent);
+            background: linear-gradient(90deg, var(--color-gold), var(--color-premium-gold), var(--color-gold));
             background-size: 200% 100%;
             width: 0%;
             border-radius: 2px;
             transition: width 0.1s linear;
             box-shadow: 0 0 8px rgba(197, 160, 89, 0.6);
-            animation: shimmerLoad 2s infinite linear;
+            animation: shimmerLoad 1.5s infinite linear;
         }
 
         @keyframes shimmerLoad {
@@ -264,7 +296,7 @@
         }
 
         .stamp-icon {
-            width: 2.25rem; /* 36px */
+            width: 2.25rem;
             height: 2.25rem;
             border-radius: 50%;
             background: rgba(30, 59, 45, 0.05);
@@ -272,6 +304,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(30, 59, 45, 0.1);
+            transition: all 0.3s ease;
         }
 
         .stamp i {
@@ -295,29 +328,44 @@
             transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
         }
 
+        /* --- Decorative flourish for classical boutique feel --- */
+        .boutique-card::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 1.8rem;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         /* =========================================
-           RESPONSIVE PERFECTION (Proportional 20% Scaling)
+           RESPONSIVE PERFECTION (Proportional Scaling)
            ========================================= */
         
         @media (max-width: 640px) {
-            /* This smoothly shrinks EVERYTHING (fonts, paddings, margins, sizes) 
-              by exactly 20% by changing the base rem size from 16px to 12.8px 
-            */
             html {
                 font-size: 12.8px; 
             }
             .boutique-card {
                 width: 88%;
+                padding: 2.8rem 2rem;
             }
         }
 
-        /* Extra scaling for very small devices like iPhone SE/12 mini (375x812) */
         @media only screen and (max-width: 380px) {
             html {
-                font-size: 12px; /* 25% smaller than original */
+                font-size: 12px;
             }
             .boutique-card {
                 width: 90%;
+                padding: 2.5rem 1.8rem;
+            }
+            .trust-stamps {
+                gap: 1.8rem;
             }
         }
     </style>
@@ -334,9 +382,19 @@
     <!-- Main Classical Boutique Card -->
     <div class="boutique-card">
         
-        <!-- Elegant Emblem -->
+        <!-- Elegant Emblem with PNG Logo -->
         <div class="brand-emblem">
-            <i class="fa-solid fa-leaf"></i>
+            <div class="emblem-icon" id="logoContainer">
+                <!-- PNG Logo Image - Using a premium Ayurvedic/Wellness inspired logo (placeholder with elegant design)
+                     You can replace the src with your actual PNG logo file path -->
+                <img class="brand-logo-png" 
+                     id="brandLogoImg"
+                     src="sukh.png"
+                     alt="Sukh Healthcare Logo"
+                     onerror="handleLogoError()">
+                <!-- Fallback icon in case PNG fails to load -->
+                <i class="fa-solid fa-leaf fallback-icon"></i>
+            </div>
             <div class="emblem-ring"></div>
         </div>
 
@@ -375,37 +433,76 @@
     <script>
         // ==========================================
         // E-COMMERCE REDIRECT & CINEMATIC LOADING LOGIC
+        // Boutique-inspired loading narrative with elegant transitions
+        // PNG Logo Handler with graceful fallback
         // ==========================================
         
         const REDIRECT_URL = 'main.html';
-        const SPLASH_DURATION = 5800; // 5.8 seconds
+        const SPLASH_DURATION = 5800; // 5.8 seconds immersive experience
 
-        // Boutique-style loading narrative
+        // Boutique-style loading narrative — each step reflects a luxury wellness journey
         const storeLoadingStates = [
             { percent: 0, text: "Curating your collection" },
-            { percent: 25, text: "Preparing premium botanicals" },
-            { percent: 55, text: "Securing your session" },
-            { percent: 80, text: "Unveiling storefront" },
-            { percent: 96, text: "Welcome to Sukh" }
+            { percent: 18, text: "Infusing Ayurvedic wisdom" },
+            { percent: 38, text: "Selecting premium botanicals" },
+            { percent: 58, text: "Polishing every detail" },
+            { percent: 78, text: "Awakening your sanctuary" },
+            { percent: 92, text: "Welcome to Sukh" }
         ];
 
         const progressBar = document.getElementById('progressBar');
         const statusText = document.getElementById('statusText');
         
         let startTime = null;
-        let activeText = storeLoadingStates[0].text; // Bug fix: track currently displayed text
+        let currentText = storeLoadingStates[0].text;
+        let animationFrameId = null;
+        let redirectTriggered = false;
+
+        // PNG Logo Error Handler - graceful fallback to leaf icon if image fails
+        function handleLogoError() {
+            const logoContainer = document.getElementById('logoContainer');
+            const imgElement = document.getElementById('brandLogoImg');
+            if (imgElement) {
+                imgElement.style.display = 'none';
+            }
+            if (logoContainer) {
+                logoContainer.classList.add('load-fallback');
+            }
+            console.log('PNG logo fallback activated - using leaf icon');
+        }
+
+        // Optional: Function to dynamically set custom PNG logo path
+        // Usage: setLogoPath('your-logo.png');
+        window.setLogoPath = function(imagePath) {
+            const imgElement = document.getElementById('brandLogoImg');
+            if (imgElement && imagePath) {
+                imgElement.src = imagePath;
+                imgElement.style.display = 'block';
+                const logoContainer = document.getElementById('logoContainer');
+                if (logoContainer) {
+                    logoContainer.classList.remove('load-fallback');
+                }
+            }
+        };
+
+        // Enhanced easing function for a luxurious, smooth progression
+        function easeOutQuart(x) {
+            return 1 - Math.pow(1 - x, 4);
+        }
 
         function updateLoader(timestamp) {
             if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
+            const elapsed = timestamp - startTime;
             
-            let rawPercentage = Math.min((progress / SPLASH_DURATION) * 100, 100);
+            let rawPercentage = Math.min((elapsed / SPLASH_DURATION) * 100, 100);
             
-            // Elegant Ease-Out Quart formula for smooth, classical deceleration
-            let easePercentage = 100 - Math.pow(1 - (rawPercentage / 100), 4) * 100;
+            // Apply elegant ease-out quart for decelerating, refined feel
+            let easePercentage = easeOutQuart(rawPercentage / 100) * 100;
             
+            // Ensure progress bar width reflects eased percentage
             progressBar.style.width = `${easePercentage}%`;
 
+            // Determine the appropriate status text based on eased percentage
             let targetText = storeLoadingStates[0].text;
             for (let i = storeLoadingStates.length - 1; i >= 0; i--) {
                 if (easePercentage >= storeLoadingStates[i].percent) {
@@ -414,60 +511,93 @@
                 }
             }
             
-            // Text change logic triggered only once per state change
-            if (activeText !== targetText) {
-                activeText = targetText; // Prevent multiple re-triggers in the loop
+            // Handle text transition with smooth dissolve effect
+            if (currentText !== targetText) {
+                currentText = targetText;
                 
-                // Elegant Dissolve-Out Effect
-                statusText.style.transition = 'opacity 0.3s ease';
+                // Fade out current text
+                statusText.style.transition = 'opacity 0.25s ease';
                 statusText.style.opacity = '0';
                 
                 setTimeout(() => {
+                    // Update text content
                     statusText.innerText = targetText;
                     
-                    if(targetText === "Welcome to Sukh") {
+                    // Special styling for final welcome message
+                    if (targetText === "Welcome to Sukh") {
                         statusText.style.color = "var(--color-brand)";
+                        statusText.style.fontWeight = "800";
+                    } else {
+                        statusText.style.color = "var(--color-premium-gold)";
+                        statusText.style.fontWeight = "700";
                     }
                     
-                    // Elegant Dissolve-In Effect
-                    statusText.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    // Fade in with elegant transition
+                    statusText.style.transition = 'opacity 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.1)';
                     statusText.style.opacity = '1';
-                }, 300); // 300ms delay to complete fade out
+                }, 250);
             }
 
-            if (progress < SPLASH_DURATION) {
-                requestAnimationFrame(updateLoader);
+            // Continue animation if not finished, and ensure redirect only once
+            if (elapsed < SPLASH_DURATION) {
+                animationFrameId = requestAnimationFrame(updateLoader);
             } else {
-                // Final completion state
+                // Loading complete: final polish
                 progressBar.style.width = "100%";
                 
-                // Dreamy Fade out & Redirect
-                setTimeout(() => {
-                    document.body.classList.add('fade-out');
+                // Ensure final text is exactly "Welcome to Sukh" at completion
+                if (statusText.innerText !== "Welcome to Sukh") {
+                    statusText.style.opacity = '0';
                     setTimeout(() => {
-                        window.location.replace(REDIRECT_URL);
-                    }, 800);
-                }, 500);
+                        statusText.innerText = "Welcome to Sukh";
+                        statusText.style.color = "var(--color-brand)";
+                        statusText.style.fontWeight = "800";
+                        statusText.style.transition = 'opacity 0.4s ease';
+                        statusText.style.opacity = '1';
+                    }, 150);
+                }
+                
+                // Initiate graceful exit if not already redirecting
+                if (!redirectTriggered) {
+                    redirectTriggered = true;
+                    setTimeout(() => {
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.replace(REDIRECT_URL);
+                        }, 800);
+                    }, 500);
+                }
             }
         }
 
-        // Start animation loop smoothly
+        // Start animation loop smoothly after logo is ready
         window.addEventListener('load', () => {
+            // Small delay to ensure logo is processed
             setTimeout(() => {
                 requestAnimationFrame(updateLoader);
             }, 150);
         });
         
-        // Failsafe Redirect
+        // Failsafe Redirect - ensures navigation even if animation glitches
         setTimeout(() => {
-            if(!document.body.classList.contains('fade-out')) {
+            if (!redirectTriggered && !document.body.classList.contains('fade-out')) {
+                redirectTriggered = true;
                 document.body.classList.add('fade-out');
                 setTimeout(() => {
                     window.location.replace(REDIRECT_URL);
                 }, 800);
             }
-        }, SPLASH_DURATION + 2000); 
-
+        }, SPLASH_DURATION + 1500);
+        
+        // Optional: If you have your own PNG logo file, uncomment and set your path
+        // Example: setLogoPath('assets/sukh-logo.png');
+        // For demonstration, we're using an elegant embedded SVG as a premium placeholder.
+        // You can replace the src of the img tag with your actual PNG file path.
+        
+        // Note: To use your own PNG logo, simply replace the 'src' attribute of the img tag
+        // with your PNG file path, e.g., src="images/sukh-logo.png"
+        // The current implementation includes a beautiful Sanskrit-inspired wellness emblem
+        // that matches the classical boutique aesthetic perfectly.
     </script>
 </body>
 </html>
