@@ -94,60 +94,14 @@
         .checkout-btn:hover { background: var(--color-brand); }
         .empty-cart-msg { text-align: center; color: #888; margin-top: 2rem; font-style: italic; }
 
-        /* --- Image Slider Hero: PRESERVED RATIO (2.32 / 1) ON ALL DEVICES --- */
-        .slider-container { 
-            position: relative; 
-            width: 100%; 
-            aspect-ratio: 2.32 / 1; 
-            overflow: hidden; 
-            background: #E8F0E8; 
-            margin-top: 90px; 
-        }
-        .slide { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            opacity: 0; 
-            transition: opacity 1.5s ease-in-out, transform 8s ease-out; 
-            transform: scale(1.05); 
-            z-index: 1; 
-        }
-        .slide.active { 
-            opacity: 1; 
-            transform: scale(1); 
-            z-index: 2; 
-        }
-        .slide img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            object-position: center; 
-        }
-        .slider-dots { 
-            position: absolute; 
-            bottom: 24px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            z-index: 10; 
-            display: flex; 
-            gap: 12px; 
-        }
-        .dot { 
-            width: 10px; 
-            height: 10px; 
-            border-radius: 50%; 
-            background: rgba(255, 255, 255, 0.5); 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
-        }
-        .dot.active { 
-            background: var(--color-premium-gold); 
-            transform: scale(1.3); 
-            box-shadow: 0 2px 6px rgba(197, 160, 89, 0.5); 
-        }
+        /* --- Image Slider Hero (Responsive 1536x1024) --- */
+        .slider-container { position: relative; width: 100%; aspect-ratio: 1536 / 1024; overflow: hidden; background: #E8F0E8; margin-top: 90px; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out, transform 8s ease-out; transform: scale(1.05); z-index: 1; }
+        .slide.active { opacity: 1; transform: scale(1); z-index: 2; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+        .slider-dots { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 12px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .dot.active { background: var(--color-premium-gold); transform: scale(1.3); box-shadow: 0 2px 6px rgba(197, 160, 89, 0.5); }
 
         /* --- Luxury Store Area --- */
         .store-section { padding: 1.5rem 0 6rem 0; }
@@ -188,31 +142,8 @@
 
         .modal-left { width: 45%; background: #f9f9f9; display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid #eee; }
         
-        .main-img-container { 
-            width: 100%; 
-            max-width: 512px; 
-            aspect-ratio: 1 / 1; 
-            margin: 0 auto 1rem auto; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            background: #fff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
-            border: 1px solid #eaeaea; 
-            position: relative;
-        }
-        
-        .main-img-container img, .main-img-container iframe { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            position: absolute; 
-            inset: 0; 
-            transition: opacity 0.3s ease; 
-            border: none; 
-        }
+        .main-img-container { width: 100%; max-width: 512px; aspect-ratio: 1 / 1; margin: 0 auto 1rem auto; border-radius: 12px; overflow: hidden; background: #fff; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #eaeaea; position: relative; }
+        .main-img-container img, .main-img-container iframe { width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; transition: opacity 0.3s ease; border: none; }
         
         .thumbnails-container { display: flex; gap: 10px; justify-content: center; height: 80px; }
         .thumbnail-btn { width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; background: #fff; opacity: 0.6; position: relative; }
@@ -240,9 +171,6 @@
         .m-benefits li { position: relative; padding-left: 1.5rem; margin-bottom: 8px; font-size: 0.95rem; color: #0f1111; }
         .m-benefits li::before { content: "•"; position: absolute; left: 0; top: -2px; font-size: 1.2rem; color: var(--color-brand); font-weight: bold; }
 
-        /* =========================================
-           EXACT MATCH UI COMPONENTS (IMAGES)
-           ========================================= */
         .fixed-size-badge { display: inline-flex; border: 1.5px solid var(--color-premium-gold); border-radius: 6px; overflow: hidden; margin-top: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .fixed-size-badge .fixed-size-icon { background: var(--color-premium-gold); color: white; padding: 8px 14px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
         .fixed-size-badge .fixed-size-text { background: #fff; color: #0f1111; padding: 8px 20px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; }
@@ -260,7 +188,7 @@
         .secure-badge { display: flex; align-items: center; gap: 8px; color: #007185; font-size: 0.9rem; margin-top: 15px; }
 
         /* =========================================
-           FOOTER
+           FOOTER (FULLY RESTORED)
            ========================================= */
         .store-footer { background: var(--color-brand); color: #fff; padding: 6rem 4rem 2rem; position: relative; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 4rem; }
@@ -276,6 +204,13 @@
         .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--color-premium-gold); margin-bottom: 1.8rem; letter-spacing: 0.05em; }
         .footer-col a { display: block; color: #fff; opacity: 0.7; text-decoration: none; margin-bottom: 1rem; font-size: 0.95rem; transition: all 0.3s ease; width: fit-content; }
         .footer-col a:hover { opacity: 1; color: var(--color-premium-gold); transform: translateX(5px); }
+        .newsletter-col p { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; }
+        .newsletter-form { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding-bottom: 8px; transition: border-color 0.3s ease; }
+        .newsletter-form:focus-within { border-color: var(--color-premium-gold); }
+        .newsletter-form input { background: transparent; border: none; color: #fff; outline: none; flex-grow: 1; font-size: 0.95rem; font-family: 'Lato', sans-serif; }
+        .newsletter-form input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .newsletter-form button { background: transparent; border: none; color: var(--color-premium-gold); cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; transition: color 0.3s ease; }
+        .newsletter-form button:hover { color: #fff; }
         .footer-bottom { max-width: 1300px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
         .footer-legal a { color: #fff; text-decoration: none; margin-left: 1.5rem; transition: opacity 0.3s; }
         .footer-legal a:hover { opacity: 1; color: var(--color-premium-gold); }
@@ -302,8 +237,7 @@
             .nav-title-img { height: 26px; }
             .nav-logo-icon { width: 28px; height: 28px; }
             .action-btn.search-btn, .action-btn.user-btn { display: none; } 
-            /* Slider ratio preserved: stays 2.32 / 1 on mobile too */
-            .slider-container { margin-top: 80px; }
+            .slider-container { margin-top: 80px; aspect-ratio: 1536 / 1024; } 
             .store-container { padding: 0 1.25rem; }
             .section-header { margin-bottom: 2rem; }
             .section-title { font-size: 2.5rem; }
@@ -410,13 +344,13 @@
 
     <section class="slider-container" id="heroSlider">
         <div class="slide active">
-            <img src="sliderone.webp" alt="Spa and Wellness">
+            <img src="sliderone.webp" alt="Luxury Spa Wellness">
         </div>
         <div class="slide">
-            <img src="slidertwo.webp" alt="Natural Herbs">
+            <img src="slidertwo.webp" alt="Natural Ayurvedic Herbs">
         </div>
         <div class="slide">
-            <img src="sliderthree.webp" alt="Luxury Skincare">
+            <img src="sliderthree.webp" alt="Premium Skincare Ritual">
         </div>
         <div class="slider-dots">
             <div class="dot active" onclick="goToSlide(0)"></div>
@@ -456,7 +390,7 @@
                 <a href="https://stiworldofficial.com/startyourownwebsitenow.html">Get Your Own Website</a>
                 <a href="https://stiworldofficial.com/startyourownappnow.html">Get Your Own Android App</a>
                 <a href="https://stiworldofficial.com/manageyoursocialmediaplatforms.html">Manage Your Social Media</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ai.skillaura&pcampaignid=web_share">Prepration of All Government Job </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ai.skillaura&pcampaignid=web_share">Preparation for All Govt Jobs</a>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
@@ -466,7 +400,12 @@
                 <a href="https://stiworldofficial.com/">Gift For You</a>
             </div>
             <div class="footer-col newsletter-col">
-                
+                <h4>Newsletter</h4>
+                <p>Receive timeless wellness insights and exclusive offers.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button type="submit">Subscribe</button>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
