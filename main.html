@@ -86,6 +86,13 @@
         .cart-item-title { font-size: 0.95rem; font-weight: 700; color: var(--color-brand); margin-bottom: 0.2rem; line-height: 1.2;}
         .cart-item-size { font-size: 0.8rem; color: #666; margin-bottom: 0.4rem; font-weight: 600;}
         .cart-item-price { font-size: 1rem; font-weight: 800; color: #0f1111; }
+        
+        /* New Cart Quantity Controls Style */
+        .cart-qty-control { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 8px; border: 1px solid #ddd; border-radius: 6px; padding: 2px 6px; width: fit-content; background: #fff; }
+        .cart-qty-btn { background: #f2f2f2; border: none; width: 22px; height: 22px; border-radius: 4px; font-weight: bold; color: var(--color-brand); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .cart-qty-btn:hover { background: #e0e0e0; }
+        .cart-qty-val { font-size: 0.9rem; font-weight: 700; width: 16px; text-align: center; }
+        
         .remove-item-btn { position: absolute; bottom: 1rem; right: 0; background: none; border: none; color: #cc0000; font-size: 0.75rem; cursor: pointer; font-weight: 700; text-transform: uppercase; transition: color 0.2s;}
         .remove-item-btn:hover { color: #ff0000; text-decoration: underline;}
         .cart-footer { padding: 1.5rem; border-top: 1px solid #eee; background: #f9f9f9; }
@@ -113,9 +120,10 @@
         .store-container { max-width: 1300px; margin: 0 auto; padding: 0 3rem; }
 
         /* --- UNIFIED PRODUCT CARDS --- */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 3.5rem 2rem; transition: opacity 0.3s ease; }
-        .product-card { background: transparent; border: none; display: flex; flex-direction: column; }
-        .product-link { text-decoration: none; color: inherit; display: block; cursor: pointer; }
+        /* PC 3-column centered grid */
+        .product-grid { display: grid; grid-template-columns: repeat(3, minmax(280px, 350px)); justify-content: center; gap: 3.5rem 2rem; transition: opacity 0.3s ease; }
+        .product-card { background: transparent; border: none; display: flex; flex-direction: column; height: 100%; }
+        .product-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; cursor: pointer; }
         .product-image-area { height: 280px; position: relative; border-radius: 20px; overflow: hidden; background: #E8F0E8; box-shadow: 0 10px 30px rgba(26, 54, 45, 0.05); }
         .product-image-area::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%); pointer-events: none; }
         .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); position: absolute; inset: 0; }
@@ -125,7 +133,7 @@
         .quick-add-btn:hover { background: var(--color-premium-gold); transform: scale(1.05); }
         .quick-add-btn i { font-size: 1.1rem; }
 
-        .product-info { padding: 1.5rem 0.5rem 0.5rem; text-align: center; }
+        .product-info { padding: 1.5rem 0.5rem 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         .product-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--color-brand); margin-bottom: 0.4rem; line-height: 1.2; transition: color 0.3s ease; }
         .product-link:hover .product-title { color: var(--color-premium-gold); }
         .product-price { font-family: 'Lato', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--color-brand); opacity: 0.9; }
@@ -188,7 +196,7 @@
         .secure-badge { display: flex; align-items: center; gap: 8px; color: #007185; font-size: 0.9rem; margin-top: 15px; }
 
         /* =========================================
-           FOOTER (FULLY RESTORED)
+           FOOTER (COMPLETELY OVERHAULED STYLES)
            ========================================= */
         .store-footer { background: var(--color-brand); color: #fff; padding: 6rem 4rem 2rem; position: relative; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 4rem; }
@@ -196,24 +204,112 @@
         .footer-logo-img-icon { width: 44px; height: 44px; object-fit: contain; }
         .footer-logo-name-img { height: 44px; width: auto; object-fit: contain; }
         .footer-desc { font-size: 0.95rem; line-height: 1.7; opacity: 0.8; margin-bottom: 2rem; max-width: 320px; }
+        
         .social-links { display: flex; gap: 1.2rem; }
-        .social-links a { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(197, 160, 89, 0.4); background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: center; color: var(--color-premium-gold); font-size: 1.15rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; z-index: 1; }
-        .social-links a::before { content: ''; position: absolute; inset: 0; background: var(--color-premium-gold); z-index: -1; transform: scale(0); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 50%; }
-        .social-links a:hover::before { transform: scale(1); }
-        .social-links a:hover { color: var(--color-brand); border-color: var(--color-premium-gold); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+        .social-links a { 
+            width: 45px; height: 45px; 
+            border-radius: 12px; 
+            border: 2px solid var(--color-premium-gold); 
+            background: transparent; 
+            display: flex; align-items: center; justify-content: center; 
+            color: var(--color-premium-gold); 
+            font-size: 1.2rem; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .social-links a:hover { 
+            background: var(--color-premium-gold); 
+            color: var(--color-brand); 
+            transform: translateY(-5px) rotate(8deg); 
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); 
+        }
+
         .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--color-premium-gold); margin-bottom: 1.8rem; letter-spacing: 0.05em; }
-        .footer-col a { display: block; color: #fff; opacity: 0.7; text-decoration: none; margin-bottom: 1rem; font-size: 0.95rem; transition: all 0.3s ease; width: fit-content; }
-        .footer-col a:hover { opacity: 1; color: var(--color-premium-gold); transform: translateX(5px); }
+        
+        /* New Footer Link Styles */
+        .footer-col a { 
+            display: inline-flex; 
+            align-items: center; 
+            color: rgba(255,255,255,0.7); 
+            text-decoration: none; 
+            margin-bottom: 0.8rem; 
+            font-size: 0.95rem; 
+            padding: 6px 12px; 
+            border-radius: 6px; 
+            transition: all 0.3s ease; 
+            border: 1px solid transparent; 
+            width: fit-content; 
+        }
+        .footer-col a::before {
+            content: '\f105'; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 8px;
+            font-size: 0.8rem;
+            color: var(--color-premium-gold);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .footer-col a:hover { 
+            color: #fff; 
+            background: rgba(255,255,255,0.05); 
+            border-color: rgba(197, 160, 89, 0.3); 
+            transform: translateX(5px); 
+        }
+        .footer-col a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         .newsletter-col p { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; }
-        .newsletter-form { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding-bottom: 8px; transition: border-color 0.3s ease; }
-        .newsletter-form:focus-within { border-color: var(--color-premium-gold); }
-        .newsletter-form input { background: transparent; border: none; color: #fff; outline: none; flex-grow: 1; font-size: 0.95rem; font-family: 'Lato', sans-serif; }
+        
+        /* New Premium Newsletter Form */
+        .newsletter-form { 
+            display: flex; 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 50px; 
+            padding: 6px; 
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .newsletter-form:focus-within { 
+            border-color: var(--color-premium-gold); 
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2); 
+        }
+        .newsletter-form input { 
+            background: transparent; 
+            border: none; 
+            color: #fff; 
+            outline: none; 
+            flex-grow: 1; 
+            padding: 0 15px; 
+            font-size: 0.95rem; 
+            font-family: 'Lato', sans-serif; 
+        }
         .newsletter-form input::placeholder { color: rgba(255, 255, 255, 0.4); }
-        .newsletter-form button { background: transparent; border: none; color: var(--color-premium-gold); cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; transition: color 0.3s ease; }
-        .newsletter-form button:hover { color: #fff; }
+        .newsletter-form button { 
+            background: var(--color-premium-gold); 
+            border: none; 
+            color: #fff; 
+            padding: 10px 24px; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            letter-spacing: 0.05em; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        .newsletter-form button:hover { 
+            background: #fff; 
+            color: var(--color-brand); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+
         .footer-bottom { max-width: 1300px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
-        .footer-legal a { color: #fff; text-decoration: none; margin-left: 1.5rem; transition: opacity 0.3s; }
-        .footer-legal a:hover { opacity: 1; color: var(--color-premium-gold); }
+        .footer-legal a { color: #fff; text-decoration: none; margin-left: 1.5rem; transition: opacity 0.3s; padding: 0; border: none; }
+        .footer-legal a::before { display: none; }
+        .footer-legal a:hover { opacity: 1; color: var(--color-premium-gold); background: transparent; border: none; transform: none; }
 
         .toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: var(--color-brand); color: #fff; padding: 1.2rem 2.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 3000; display: flex; align-items: center; gap: 12px; }
         .toast.show { bottom: 40px; }
@@ -226,6 +322,8 @@
             .product-modal { flex-direction: column; height: 95vh; display: block; overflow-y: auto; }
             .modal-left { width: 100%; height: auto; padding: 1.5rem; }
             .modal-right { width: 100%; padding: 2rem; }
+            /* Tablet 2-column centered grid */
+            .product-grid { grid-template-columns: repeat(2, minmax(280px, 350px)); justify-content: center; gap: 3rem 2rem; }
         }
 
         @media (max-width: 640px) {
@@ -242,13 +340,18 @@
             .section-header { margin-bottom: 2rem; }
             .section-title { font-size: 2.5rem; }
             .section-subtitle::before, .section-subtitle::after { width: 25px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 0.8rem; }
-            .product-image-area { height: auto; aspect-ratio: 1 / 1; border-radius: 16px; }
-            .quick-add-btn { width: 32px; height: 32px; bottom: 0.5rem; right: 0.5rem; }
-            .quick-add-btn i { font-size: 0.85rem; }
-            .product-info { padding: 0.8rem 0.25rem 0; }
-            .product-title { font-size: 0.95rem; margin-bottom: 0.2rem; }
-            .product-price { font-size: 0.85rem; }
+            
+            /* Mobile 1-column beautifully centered grid */
+            .product-grid { grid-template-columns: minmax(260px, 380px); justify-content: center; gap: 3.5rem; }
+            .product-image-area { height: auto; aspect-ratio: 1 / 1; border-radius: 20px; }
+            
+            /* Enhanced sizes for mobile 1-column view */
+            .quick-add-btn { width: 40px; height: 40px; bottom: 1rem; right: 1rem; }
+            .quick-add-btn i { font-size: 1rem; }
+            .product-info { padding: 1rem 0.25rem 0; }
+            .product-title { font-size: 1.2rem; margin-bottom: 0.3rem; }
+            .product-price { font-size: 1.05rem; }
+            
             .store-footer { padding: 4rem 2rem 2rem; }
             .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
             .brand-col { text-align: center; }
@@ -275,7 +378,7 @@
 
     <header class="header-wrapper" id="headerWrapper">
         <div class="top-bar">
-            <span>Free Express Delivery on Orders Over ₹5,000 &nbsp; | &nbsp; 100% Certified Organic</span>
+            <span>30 Years Of Experience InThis Field &nbsp; | &nbsp; 100% Certified Organic</span>
         </div>
 
         <nav class="navbar">
@@ -323,6 +426,7 @@
         </div>
     </div>
 
+    <!-- CART OVERLAY -->
     <div class="cart-overlay" id="cartOverlay">
         <div class="cart-drawer">
             <div class="cart-header">
@@ -337,7 +441,7 @@
                     <span>Total Amount:</span>
                     <span id="cartTotalAmount">₹0</span>
                 </div>
-                <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">Checkout</button>
+                <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">Proceed to Checkout</button>
             </div>
         </div>
     </div>
@@ -367,7 +471,8 @@
         
         <div class="store-container">
             <div class="product-grid" id="productGrid">
-                </div>
+                <!-- Javascript dynamic products and static link cards will load here -->
+            </div>
         </div>
     </main>
 
@@ -423,6 +528,7 @@
         <span>Item added to your bag</span>
     </div>
 
+    <!-- PRODUCT MODAL -->
     <div class="modal-overlay" id="productModal">
         <button class="modal-close" id="closeBtnMobile" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
         <div class="product-modal">
@@ -555,28 +661,49 @@
         resetInterval();
 
         let cart = [];
-        function openCart() { document.getElementById('cartOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; updateCartUI(); }
-        window.closeCart = function() { document.getElementById('cartOverlay').classList.remove('active'); document.body.style.overflow = ''; };
-        document.getElementById('cartOverlay').addEventListener('click', (e) => { if(e.target === document.getElementById('cartOverlay')) closeCart(); });
+        
+        function openCart() { 
+            document.getElementById('cartOverlay').classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+            updateCartUI(); 
+        }
+        
+        window.closeCart = function() { 
+            document.getElementById('cartOverlay').classList.remove('active'); 
+            document.body.style.overflow = ''; 
+        };
+        
+        document.getElementById('cartOverlay').addEventListener('click', (e) => { 
+            if(e.target === document.getElementById('cartOverlay')) closeCart(); 
+        });
 
         const products = [
-            { id: 1, name: "KAMA-XXX GOLD", 
-             price: "₹599", mrp: "₹899", 
+            { 
+             id: 1, 
+             name: "KAMA-XXX GOLD", 
+             price: "₹599", 
+             mrp: "₹899", 
              discount: "-30%",
              size: "5 Capsules",
              image: "kama-xxx-one.png", 
-             gallery: [ { type: 'video', id: "aqz-KE-bpKQ" },
-             { type: 'image', url: "kama-xxx-one.png" }, { type: 'image', url: "kama-xxx-two.png" }, { type: 'image', url: "kama-xxx-three.png" }, { type: 'image', url: "kama-xxx-four.png" } ],
-             reviews: 124, rating: "4.9", 
+             gallery: [ 
+                 { type: 'video', id: "aqz-KE-bpKQ" },
+                 { type: 'image', url: "kama-xxx-one.png" }, 
+                 { type: 'image', url: "kama-xxx-two.png" }, 
+                 { type: 'image', url: "kama-xxx-three.png" }, 
+                 { type: 'image', url: "kama-xxx-four.png" } 
+             ],
+             reviews: 124, 
+             rating: "4.9", 
              desc: "An Ayurvedic proprietary medicine designed for vigour and vitality in men. Crafted with powerful herbal and mineral ingredients to support stamina, strength, and overall performance.",
-             benefits: ["Reduces Stress and Clinical Anxiety",
-                        "Improves stamina and physical performance", 
-                        "Boosts vigour and vitality in men",
-                        "Supports overall strength and endurance",
-                        "Helps improve energy levels naturally"],
-             
-             ingredients: `
-  Each 500 mg Capsule Contains:
+             benefits: [
+                 "Reduces Stress and Clinical Anxiety",
+                 "Improves stamina and physical performance", 
+                 "Boosts vigour and vitality in men",
+                 "Supports overall strength and endurance",
+                 "Helps improve energy levels naturally"
+             ],
+             ingredients: `Each 500 mg Capsule Contains:
 - Sidh Makardhwaj – 10mg
 - Sawaran Bhang – 20mg
 - Loh Bhasm – 20mg
@@ -591,33 +718,267 @@
 - Konch Beej – 40mg
 - Vidari Kand – 40mg
 - Salam Mishri – 40mg
-- Samel – 40mg
-  `,
-             usage: "Take 1 capsule at night with lukewarm milk or as directed by physician." },
-            { id: 2, name: "Premium Shilajit Resin", price: "₹6,499", mrp: "₹8,999", discount: "-28%", size: "20gm", image: "ytglogo.png", gallery: [ { type: 'video', id: "aqz-KE-bpKQ" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" } ], reviews: 89, rating: "4.9", desc: "100% pure Himalayan Shilajit extracted from extreme high altitudes. The most potent and natural way to increase your body's raw strength, stamina, and cellular energy.", benefits: ["Drastically increases physical stamina", "Rich in Fulvic acid and 80+ essential trace minerals", "Supports healthy anti-aging properties", "Improves cognitive health"], ingredients: "Himalayan Gold Grade Shilajit Resin (Sun-Dried & Purified).", usage: "Dissolve a pea-sized amount in warm milk, water, or green tea once daily." },
-            { id: 3, name: "Amla Vitamin C Glow Drops", price: "₹2,199", mrp: "₹2,599", discount: "-15%", size: "50ml", image: "ytglogo.png", gallery: [ { type: 'video', id: "aqz-KE-bpKQ" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" } ], reviews: 210, rating: "4.5", desc: "Highly concentrated super-drops made from wild Indian Amla. Designed to flush toxins, give your skin a natural glowing complexion, and combat everyday fatigue.", benefits: ["Richest natural source of bioactive Vitamin C", "Provides a radiant and clear skin glow", "Removes daily muscle and mental fatigue", "Promotes healthy hair growth"], ingredients: "Cold-pressed Wild Amla Extract, Tulsi Ark, Distilled Aqua base.", usage: "Mix 10-15 drops in a glass of normal or warm water every morning on an empty stomach." },
-            { id: 4, name: "Sacred Tulsi Basil Blend", price: "₹1,999", mrp: "₹2,499", discount: "-20%", size: "100gm", image: "ytglogo.png", gallery: [ { type: 'video', id: "aqz-KE-bpKQ" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" }, { type: 'image', url: "ytglogo.png" } ], reviews: 112, rating: "4.8", desc: "Pure Sacred Holy Basil leaves, hand-picked and carefully shadow-dried to preserve their powerful immunity-boosting and adaptogenic properties.", benefits: ["Dramatically boosts respiratory health and clears airways", "Packed with healing antioxidants", "Delivers a deeply calming effect on the nervous system", "Supports healthy blood sugar"], ingredients: "100% Organic Rama, Krishna, and Vana Tulsi Leaves.", usage: "Brew 1 teaspoon in a cup of hot water for 5-7 minutes. Add honey if desired." }
+- Samel – 40mg`,
+             usage: "Take 1 capsule at night with lukewarm milk or as directed by physician." 
+            }
         ];
 
         let currentModalProduct = null;
         let currentQty = 1;
-        function renderProducts() {
-            const grid = document.getElementById('productGrid'); grid.style.opacity = '0'; 
-            setTimeout(() => { grid.innerHTML = ''; products.forEach(product => { const card = document.createElement('article'); card.className = 'product-card'; card.innerHTML = `<div class="product-link" onclick="openModal(${product.id})"><div class="product-image-area"><img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy"><button class="quick-add-btn" onclick="handleAddToCartFromGrid(event, ${product.id})"><i class="fa-solid fa-plus"></i></button></div><div class="product-info"><h2 class="product-title">${product.name}</h2><div class="product-price">${product.price}</div></div></div>`; grid.appendChild(card); }); grid.style.opacity = '1'; }, 200);
-        }
-        window.handleAddToCartFromGrid = function(event, productId) { event.preventDefault(); event.stopPropagation(); let prod = products.find(p => p.id === productId); if(prod) addItemsToCart(prod.name, prod.price, prod.image, prod.size, 1); };
-        function addItemsToCart(productName, priceStr, imgUrl, sizeText, qty) { let priceNum = parseInt(priceStr.replace(/[^0-9]/g, '')); cart.push({ id: Date.now(), name: productName, priceNum: priceNum * qty, priceStr: priceStr, image: imgUrl, size: sizeText, qty: qty }); let totalItems = cart.reduce((sum, item) => sum + item.qty, 0); document.getElementById('cartCount').innerText = totalItems; updateCartUI(); showToast(); }
-        window.removeFromCart = function(itemId) { cart = cart.filter(item => item.id !== itemId); let totalItems = cart.reduce((sum, item) => sum + item.qty, 0); document.getElementById('cartCount').innerText = totalItems; updateCartUI(); };
-        function updateCartUI() { const itemsContainer = document.getElementById('cartItems'); const totalEl = document.getElementById('cartTotalAmount'); itemsContainer.innerHTML = ''; let total = 0; if (cart.length === 0) { itemsContainer.innerHTML = '<div class="empty-cart-msg">Your bag is currently empty.</div>'; } else { cart.forEach(item => { total += item.priceNum; itemsContainer.innerHTML += `<div class="cart-item"><img src="${item.image}" alt="${item.name}" class="cart-item-img"><div class="cart-item-details"><div class="cart-item-title">${item.name}</div><div class="cart-item-size">Size: ${item.size} | Qty: ${item.qty}</div><div class="cart-item-price">₹${item.priceNum.toLocaleString('en-IN')}</div><button class="remove-item-btn" onclick="removeFromCart(${item.id})">Remove</button></div></div>`; }); } totalEl.innerText = '₹' + total.toLocaleString('en-IN'); }
-        function showToast() { const toast = document.getElementById('toastMsg'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
 
-        window.changeMainMedia = function(type, data, element) { document.querySelectorAll('.thumbnail-btn').forEach(btn => btn.classList.remove('active')); element.classList.add('active'); const imgEl = document.getElementById('modalMainImg'); const vidEl = document.getElementById('modalVideo'); if (type === 'video') { imgEl.classList.add('hidden'); vidEl.classList.remove('hidden'); vidEl.src = `https://www.youtube.com/embed/${data}?autoplay=1&mute=1&loop=1&playlist=${data}`; } else { vidEl.classList.add('hidden'); imgEl.classList.remove('hidden'); vidEl.src = ''; imgEl.src = data; } };
-        window.updateQty = function(change) { currentQty += change; if(currentQty < 1) currentQty = 1; if(currentQty > 20) currentQty = 20; document.getElementById('modalQty').value = currentQty; };
-        window.openModal = function(id) { currentModalProduct = products.find(p => p.id === id); if(!currentModalProduct) return; const imgEl = document.getElementById('modalMainImg'); const vidEl = document.getElementById('modalVideo'); vidEl.src = ''; vidEl.classList.add('hidden'); imgEl.classList.remove('hidden'); imgEl.src = currentModalProduct.gallery[1].url; const thumbnailsContainer = document.getElementById('modalThumbnails'); thumbnailsContainer.innerHTML = ''; currentModalProduct.gallery.forEach((item, index) => { const isActive = index === 1 ? 'active' : ''; if (item.type === 'video') { thumbnailsContainer.innerHTML += `<div class="thumbnail-btn" onclick="changeMainMedia('video', '${item.id}', this)"><img src="https://img.youtube.com/vi/${item.id}/hqdefault.jpg" alt="Video"><div class="video-play-icon"><i class="fa-solid fa-play"></i></div></div>`; } else { thumbnailsContainer.innerHTML += `<div class="thumbnail-btn ${isActive}" onclick="changeMainMedia('image', '${item.url}', this)"><img src="${item.url}" alt="Thumbnail"></div>`; } }); document.getElementById('modalTitle').innerText = currentModalProduct.name; document.getElementById('modalRatingNo').innerHTML = `${currentModalProduct.rating} <i class="fa-solid fa-star text-[10px]"></i>`; document.getElementById('modalReviews').innerText = `${currentModalProduct.reviews} ratings`; document.getElementById('modalPrice').innerText = currentModalProduct.price; document.getElementById('modalMRP').innerText = currentModalProduct.mrp; document.getElementById('modalDiscount').innerText = currentModalProduct.discount; document.getElementById('modalSizeText').innerText = currentModalProduct.size; document.getElementById('modalDesc').innerText = currentModalProduct.desc; const benefitsList = document.getElementById('modalBenefits'); benefitsList.innerHTML = ''; currentModalProduct.benefits.forEach(benefit => { benefitsList.innerHTML += `<li>${benefit}</li>`; }); document.getElementById('modalIngredients').innerText = currentModalProduct.ingredients; document.getElementById('modalUsage').innerText = currentModalProduct.usage; currentQty = 1; document.getElementById('modalQty').value = currentQty; document.getElementById('productModal').classList.add('active'); document.body.style.overflow = 'hidden'; };
-        window.closeModal = function() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; document.getElementById('modalVideo').src = ''; currentModalProduct = null; };
-        window.addToCartFromModal = function() { if(currentModalProduct) { addItemsToCart(currentModalProduct.name, currentModalProduct.price, currentModalProduct.image, currentModalProduct.size, currentQty); closeModal(); } };
-        window.buyNow = function() { alert("Proceeding to secure checkout..."); closeModal(); };
-        document.getElementById('productModal').addEventListener('click', (e) => { if(e.target === document.getElementById('productModal')) closeModal(); });
+        function renderProducts() {
+            const grid = document.getElementById('productGrid'); 
+            grid.style.opacity = '0'; 
+            
+            setTimeout(() => { 
+                grid.innerHTML = ''; 
+                
+                // Add the actual product
+                products.forEach(product => { 
+                    const card = document.createElement('article'); 
+                    card.className = 'product-card'; 
+                    card.innerHTML = `
+                    <div class="product-link" onclick="openModal(${product.id})">
+                        <div class="product-image-area">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                            <button class="quick-add-btn" onclick="handleAddToCartFromGrid(event, ${product.id})"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">${product.name}</h2>
+                            <div class="product-price">${product.price}</div>
+                        </div>
+                    </div>`; 
+                    grid.appendChild(card); 
+                }); 
+                
+                // Add "Track Your Order" Card
+                const trackCard = document.createElement('article');
+                trackCard.className = 'product-card special-card';
+                trackCard.innerHTML = `
+                    <a href="trackorder.html" class="product-link">
+                        <div class="product-image-area" style="background: var(--color-brand); display: flex; align-items: center; justify-content: center;">
+                            <i class="fa-solid fa-truck-fast" style="font-size: 3.5rem; color: var(--color-premium-gold); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title" style="font-size: 1.5rem;">Track Your Order</h2>
+                            <div class="product-price" style="font-size: 0.85rem; font-weight: 500; color: #666; font-family: 'Lato', sans-serif;">Real-time delivery updates</div>
+                        </div>
+                    </a>
+                `;
+                grid.appendChild(trackCard);
+
+                // Add "Wellness Blog" Card
+                const blogCard = document.createElement('article');
+                blogCard.className = 'product-card special-card';
+                blogCard.innerHTML = `
+                    <a href="allblogs.html" class="product-link">
+                        <div class="product-image-area" style="background: var(--color-premium-gold); display: flex; align-items: center; justify-content: center;">
+                            <i class="fa-solid fa-book-open" style="font-size: 3.5rem; color: #fff; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title" style="font-size: 1.5rem;">Wellness Blog</h2>
+                            <div class="product-price" style="font-size: 0.85rem; font-weight: 500; color: #666; font-family: 'Lato', sans-serif;">Explore timeless insights</div>
+                        </div>
+                    </a>
+                `;
+                grid.appendChild(blogCard);
+
+                grid.style.opacity = '1'; 
+            }, 200);
+        }
+
+        window.handleAddToCartFromGrid = function(event, productId) { 
+            event.preventDefault(); 
+            event.stopPropagation(); 
+            let prod = products.find(p => p.id === productId); 
+            if(prod) {
+                addItemsToCart(prod, 1); 
+            }
+        };
+
+        // Advanced Cart Logic: Groups same items and updates quantity
+        function addItemsToCart(product, qty) { 
+            let priceNum = parseInt(product.price.replace(/[^0-9]/g, '')); 
+            
+            // Check if item is already in cart
+            let existingItemIndex = cart.findIndex(item => item.id === product.id);
+            
+            if(existingItemIndex !== -1) {
+                cart[existingItemIndex].qty += qty;
+            } else {
+                cart.push({ 
+                    id: product.id, 
+                    name: product.name, 
+                    priceNum: priceNum, 
+                    priceStr: product.price, 
+                    image: product.image, 
+                    size: product.size, 
+                    qty: qty 
+                }); 
+            }
+            
+            updateCartCount();
+            updateCartUI(); 
+            showToast(); 
+        }
+
+        function updateCartCount() {
+            let totalItems = cart.reduce((sum, item) => sum + item.qty, 0); 
+            document.getElementById('cartCount').innerText = totalItems; 
+        }
+
+        window.updateCartItemQty = function(id, change) {
+            let itemIndex = cart.findIndex(i => i.id === id);
+            if(itemIndex !== -1) {
+                cart[itemIndex].qty += change;
+                if(cart[itemIndex].qty <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartCount();
+                    updateCartUI();
+                }
+            }
+        };
+
+        window.removeFromCart = function(itemId) { 
+            cart = cart.filter(item => item.id !== itemId); 
+            updateCartCount();
+            updateCartUI(); 
+        };
+
+        function updateCartUI() { 
+            const itemsContainer = document.getElementById('cartItems'); 
+            const totalEl = document.getElementById('cartTotalAmount'); 
+            itemsContainer.innerHTML = ''; 
+            let total = 0; 
+            
+            if (cart.length === 0) { 
+                itemsContainer.innerHTML = '<div class="empty-cart-msg">Your bag is currently empty.</div>'; 
+            } else { 
+                cart.forEach(item => { 
+                    let itemTotalAmount = item.priceNum * item.qty;
+                    total += itemTotalAmount; 
+                    itemsContainer.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-size">Size: ${item.size}</div>
+                                
+                                <div class="cart-qty-control">
+                                    <button class="cart-qty-btn" onclick="updateCartItemQty(${item.id}, -1)">-</button>
+                                    <span class="cart-qty-val">${item.qty}</span>
+                                    <button class="cart-qty-btn" onclick="updateCartItemQty(${item.id}, 1)">+</button>
+                                </div>
+                                
+                                <div class="cart-item-price">₹${itemTotalAmount.toLocaleString('en-IN')}</div>
+                                <button class="remove-item-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                            </div>
+                        </div>`; 
+                }); 
+            } 
+            totalEl.innerText = '₹' + total.toLocaleString('en-IN'); 
+        }
+
+        function showToast() { 
+            const toast = document.getElementById('toastMsg'); 
+            toast.classList.add('show'); 
+            setTimeout(() => toast.classList.remove('show'), 3000); 
+        }
+
+        window.changeMainMedia = function(type, data, element) { 
+            document.querySelectorAll('.thumbnail-btn').forEach(btn => btn.classList.remove('active')); 
+            element.classList.add('active'); 
+            const imgEl = document.getElementById('modalMainImg'); 
+            const vidEl = document.getElementById('modalVideo'); 
+            if (type === 'video') { 
+                imgEl.classList.add('hidden'); 
+                vidEl.classList.remove('hidden'); 
+                vidEl.src = `https://www.youtube.com/embed/${data}?autoplay=1&mute=1&loop=1&playlist=${data}`; 
+            } else { 
+                vidEl.classList.add('hidden'); 
+                imgEl.classList.remove('hidden'); 
+                vidEl.src = ''; 
+                imgEl.src = data; 
+            } 
+        };
+
+        window.updateQty = function(change) { 
+            currentQty += change; 
+            if(currentQty < 1) currentQty = 1; 
+            if(currentQty > 20) currentQty = 20; 
+            document.getElementById('modalQty').value = currentQty; 
+        };
+
+        window.openModal = function(id) { 
+            currentModalProduct = products.find(p => p.id === id); 
+            if(!currentModalProduct) return; 
+            
+            const imgEl = document.getElementById('modalMainImg'); 
+            const vidEl = document.getElementById('modalVideo'); 
+            vidEl.src = ''; 
+            vidEl.classList.add('hidden'); 
+            imgEl.classList.remove('hidden'); 
+            imgEl.src = currentModalProduct.gallery[1].url; 
+            
+            const thumbnailsContainer = document.getElementById('modalThumbnails'); 
+            thumbnailsContainer.innerHTML = ''; 
+            currentModalProduct.gallery.forEach((item, index) => { 
+                const isActive = index === 1 ? 'active' : ''; 
+                if (item.type === 'video') { 
+                    thumbnailsContainer.innerHTML += `<div class="thumbnail-btn" onclick="changeMainMedia('video', '${item.id}', this)"><img src="https://img.youtube.com/vi/${item.id}/hqdefault.jpg" alt="Video"><div class="video-play-icon"><i class="fa-solid fa-play"></i></div></div>`; 
+                } else { 
+                    thumbnailsContainer.innerHTML += `<div class="thumbnail-btn ${isActive}" onclick="changeMainMedia('image', '${item.url}', this)"><img src="${item.url}" alt="Thumbnail"></div>`; 
+                } 
+            }); 
+            
+            document.getElementById('modalTitle').innerText = currentModalProduct.name; 
+            document.getElementById('modalRatingNo').innerHTML = `${currentModalProduct.rating} <i class="fa-solid fa-star text-[10px]"></i>`; 
+            document.getElementById('modalReviews').innerText = `${currentModalProduct.reviews} ratings`; 
+            document.getElementById('modalPrice').innerText = currentModalProduct.price; 
+            document.getElementById('modalMRP').innerText = currentModalProduct.mrp; 
+            document.getElementById('modalDiscount').innerText = currentModalProduct.discount; 
+            document.getElementById('modalSizeText').innerText = currentModalProduct.size; 
+            document.getElementById('modalDesc').innerText = currentModalProduct.desc; 
+            
+            const benefitsList = document.getElementById('modalBenefits'); 
+            benefitsList.innerHTML = ''; 
+            currentModalProduct.benefits.forEach(benefit => { 
+                benefitsList.innerHTML += `<li>${benefit}</li>`; 
+            }); 
+            
+            document.getElementById('modalIngredients').innerText = currentModalProduct.ingredients; 
+            document.getElementById('modalUsage').innerText = currentModalProduct.usage; 
+            
+            currentQty = 1; 
+            document.getElementById('modalQty').value = currentQty; 
+            document.getElementById('productModal').classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        };
+
+        window.closeModal = function() { 
+            document.getElementById('productModal').classList.remove('active'); 
+            document.body.style.overflow = ''; 
+            document.getElementById('modalVideo').src = ''; 
+            currentModalProduct = null; 
+        };
+
+        window.addToCartFromModal = function() { 
+            if(currentModalProduct) { 
+                addItemsToCart(currentModalProduct, currentQty); 
+                closeModal(); 
+            } 
+        };
+
+        window.buyNow = function() { 
+            alert("Proceeding to secure checkout..."); 
+            closeModal(); 
+        };
+
+        document.getElementById('productModal').addEventListener('click', (e) => { 
+            if(e.target === document.getElementById('productModal')) closeModal(); 
+        });
+
         window.onload = renderProducts;
     </script>
 </body>
