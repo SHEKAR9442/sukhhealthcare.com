@@ -325,11 +325,11 @@
             </div>
 
             <div class="space-y-4 relative z-10">
-                <a href="#bridal_studio.html" class="accordion-btn"><span></span><i class="fas fa-arrow-right text-[10px]"></i></a>
-                <a href="#festive_art.html" class="accordion-btn"><span></span><i class="fas fa-arrow-right text-[10px]"></i></a>
-                <a href="#custom_mehndi.html" class="accordion-btn"><span></span><i class="fas fa-arrow-right text-[10px]"></i></a>
-                <a href="#meet_me.html" class="accordion-btn"><span></span><i class="fas fa-arrow-right text-[10px]"></i></a>
-                <a href="#gallery.html" class="accordion-btn"><span></span><i class="fas fa-arrow-right text-[10px]"></i></a>
+                <a href="#bridal_studio.html" class="accordion-btn"><span>BRIDAL STUDIO</span><i class="fas fa-arrow-right text-[10px]"></i></a>
+                <a href="#festive_art.html" class="accordion-btn"><span>FESTIVE ART</span><i class="fas fa-arrow-right text-[10px]"></i></a>
+                <a href="#custom_mehndi.html" class="accordion-btn"><span>CUSTOM CONCEPT</span><i class="fas fa-arrow-right text-[10px]"></i></a>
+                <a href="#meet_me.html" class="accordion-btn"><span>MEET MASTER</span><i class="fas fa-arrow-right text-[10px]"></i></a>
+                <a href="#gallery.html" class="accordion-btn"><span>GALLERY</span><i class="fas fa-arrow-right text-[10px]"></i></a>
             </div>
         </div>
     </div>
@@ -373,8 +373,8 @@
                 </div>
             </div>
             
-            <!-- Second Card: Kept exact original visual and old popup logic -->
-            <div class="premium-card group" onclick="openPopup('festive')">
+            <!-- Second Card: Changed to link directly to track.html instead of opening popup -->
+            <div class="premium-card group" onclick="window.location.href='track.html'">
                 <img src="festive.png" class="card-img" onerror="this.src='track.png'">
                 <div class="mt-4 text-center">
                     <h3 class="text-sm sm:text-lg font-black text-dark group-hover:text-secondary transition-colors uppercase tracking-widest">Treck-Order</h3>
@@ -582,14 +582,14 @@
             { 
              id: 1, 
              name: "KAMA-XXX GOLD", 
-             price: "₹569", 
+             price: "₹599", 
              mrp: "₹899", 
-             discount: "-37%",
+             discount: "-30%",
              size: "5 Capsules",
              image: "kama-xxx-initial.png", 
              gallery: [ 
                  { type: 'video', id: "aqz-KE-bpKQ" },
-                 { type: 'image', url: "kama-xxx-one.png" }, 
+                 { type: 'image', url: "kama-xxx-initial.png" }, 
                  { type: 'image', url: "kama-xxx-two.png" }, 
                  { type: 'image', url: "kama-xxx-three.png" }, 
                  { type: 'image', url: "kama-xxx-four.png" } 
@@ -744,4 +744,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
