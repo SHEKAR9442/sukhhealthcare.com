@@ -30,7 +30,7 @@
         body { background-color: var(--color-bg-base); font-family: 'Lato', sans-serif; color: var(--color-text); overflow-x: hidden; }
 
         /* =========================================
-           HEADER & NAVBAR (Updated z-index to stay above modals)
+           HEADER & NAVBAR
            ========================================= */
         .header-wrapper { position: fixed; top: 0; left: 0; width: 100%; z-index: 3000; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .top-bar { background-color: var(--color-brand); color: var(--color-premium-gold); text-align: center; display: flex; align-items: center; justify-content: center; height: 36px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; transition: height 0.4s ease, opacity 0.4s ease; overflow: hidden; }
@@ -125,7 +125,6 @@
         .product-card { width: 350px; background: transparent; border: none; display: flex; flex-direction: column; height: 100%; margin: 0 auto; }
         .product-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; cursor: pointer; }
         
-        /* Updated 1920x1080 Aspect Ratio for Cards */
         .product-image-area { width: 350px; aspect-ratio: 1920 / 1080; height: auto; position: relative; border-radius: 20px; overflow: hidden; background: #E8F0E8; box-shadow: 0 10px 30px rgba(26, 54, 45, 0.05); }
         .product-image-area::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%); pointer-events: none; }
         .product-image { width: 100%; height: 100%; object-fit: cover; padding: 0; transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); position: absolute; inset: 0; }
@@ -152,11 +151,9 @@
 
         .modal-left { width: 45%; background: #f9f9f9; display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid #eee; }
         
-        /* Updated 1920x1080 Aspect Ratio for Modal Images/Video */
         .main-img-container { width: 100%; max-width: 512px; aspect-ratio: 1920 / 1080; height: auto; margin: 0 auto 1rem auto; border-radius: 12px; overflow: hidden; background: #fff; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #eaeaea; position: relative; }
         .main-img-container img, .main-img-container iframe { width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; transition: opacity 0.3s ease; border: none; }
         
-        /* Updated Thumbnail aspect ratio */
         .thumbnails-container { display: flex; gap: 10px; justify-content: center; height: 45px; }
         .thumbnail-btn { width: 80px; height: 45px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; background: #fff; opacity: 0.6; position: relative; }
         .thumbnail-btn:hover { opacity: 1; }
@@ -200,11 +197,11 @@
         .secure-badge { display: flex; align-items: center; gap: 8px; color: #007185; font-size: 0.9rem; margin-top: 15px; }
 
         /* =========================================
-           CHECKOUT MODAL (30% SMALLER & CENTERED)
+           CHECKOUT MODAL
            ========================================= */
         .checkout-modal { 
             background: #fff; 
-            width: 336px; /* 30% smaller than before */
+            width: 336px; 
             max-width: 90vw; 
             max-height: 90vh;
             overflow-y: auto;
@@ -216,7 +213,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
             display: flex; 
             flex-direction: column; 
-            margin: auto; /* Vertically and horizontally centered */
+            margin: auto; 
         }
         #checkoutModalOverlay.active .checkout-modal { transform: scale(1); }
         #checkoutModalOverlay { z-index: 4000; }
@@ -228,6 +225,13 @@
         .checkout-input:focus { outline: none; border-color: var(--color-premium-gold); box-shadow: 0 0 5px rgba(197, 160, 89, 0.3); }
         .checkout-textarea { resize: vertical; min-height: 55px; }
         .checkout-summary { background: #f9f9f9; padding: 10px 15px; border-radius: 6px; margin-bottom: 1.2rem; display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; color: var(--color-brand); border: 1px solid #eee; }
+        
+        /* Delivery Options Styles */
+        .delivery-options-container { background: #fdfbf7; padding: 12px; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 1.2rem; }
+        .delivery-option { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .delivery-option input[type="radio"] { width: 16px; height: 16px; accent-color: var(--color-brand); cursor: pointer; }
+        .delivery-option label { font-size: 0.85rem; font-weight: 600; color: #0f1111; cursor: pointer; margin: 0; display: inline-block; }
+
         .checkout-pay-btn { width: 100%; background: #FFA41C; border: 1px solid #FF8F00; border-radius: 50px; padding: 10px; font-size: 1rem; font-weight: 700; color: #0f1111; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 10px rgba(255, 164, 28, 0.3); display: flex; justify-content: center; align-items: center; gap: 8px;}
         .checkout-pay-btn:hover { background: #FA8900; }
         .checkout-pay-btn.opacity-70 { opacity: 0.7; cursor: not-allowed; }
@@ -235,7 +239,7 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* =========================================
-           FOOTER (COMPLETELY OVERHAULED STYLES)
+           FOOTER 
            ========================================= */
         .store-footer { background: var(--color-brand); color: #fff; padding: 6rem 4rem 2rem; position: relative; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 4rem; }
@@ -264,7 +268,6 @@
 
         .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--color-premium-gold); margin-bottom: 1.8rem; letter-spacing: 0.05em; }
         
-        /* New Footer Link Styles */
         .footer-col a { 
             display: inline-flex; 
             align-items: center; 
@@ -302,7 +305,6 @@
 
         .newsletter-col p { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; }
         
-        /* New Premium Newsletter Form */
         .newsletter-form { 
             display: flex; 
             background: rgba(255,255,255,0.05); 
@@ -353,19 +355,17 @@
         .toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: var(--color-brand); color: #fff; padding: 1.2rem 2.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 5000; display: flex; align-items: center; gap: 12px; }
         .toast.show { bottom: 40px; }
 
-        /* Media Queries - Vertical Scrolling for Popups Fix */
+        /* Media Queries */
         @media (max-width: 1024px) {
             .nav-links { display: none; } 
             .mobile-menu-btn { display: block; } 
             .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
             .section-title { font-size: 2.8rem; }
             
-            /* Tablet Product Modal Scrolling Fix */
             .product-modal { flex-direction: column; height: 85vh; display: block; overflow-y: auto; overflow-x: hidden; }
             .modal-left { width: 100%; height: auto; padding: 1.5rem; }
             .modal-right { width: 100%; padding: 2rem; overflow-y: visible; }
             
-            /* Fixed columns layout for Tablet */
             .product-grid { grid-template-columns: repeat(auto-fit, 350px); justify-content: center; gap: 3rem 2rem; }
         }
 
@@ -378,12 +378,11 @@
             .nav-title-img { height: 26px; }
             .nav-logo-icon { width: 28px; height: 28px; }
             .slider-container { margin-top: 80px; aspect-ratio: 1536 / 1024; } 
-            .store-container { padding: 0 5px; } /* Reduced padding to help fit 350px width */
+            .store-container { padding: 0 5px; } 
             .section-header { margin-bottom: 2rem; }
             .section-title { font-size: 2.5rem; }
             .section-subtitle::before, .section-subtitle::after { width: 25px; }
             
-            /* Fixed width layout for Mobile */
             .product-grid { grid-template-columns: 350px; justify-content: center; gap: 3.5rem; }
             
             .quick-add-btn { width: 40px; height: 40px; bottom: 1rem; right: 1rem; }
@@ -401,12 +400,10 @@
             .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
             .footer-legal a { margin: 0 0.5rem; }
             
-            /* Mobile Product Modal Scrolling Fix */
             .product-modal { flex-direction: column; height: 80vh; display: block; overflow-y: auto; overflow-x: hidden; border-radius: 12px; margin: auto; max-width: 92vw; width: 92vw; transform: scale(0.95); }
             .modal-overlay.active .product-modal { transform: scale(1); }
             .modal-left { width: 100%; height: auto; padding: 1rem; border-right: none; border-bottom: 1px solid #eee; }
             
-            /* Updated 1920x1080 Aspect Ratio override for mobile modal */
             .main-img-container { aspect-ratio: 1920 / 1080; height: auto; } 
             .thumbnails-container { height: 34px; }
             .thumbnail-btn { width: 60px; height: 34px; }
@@ -657,11 +654,6 @@
                 <h2 class="checkout-title">Secure Checkout</h2>
             </div>
             
-            <div class="checkout-summary">
-                <span>Total Amount:</span>
-                <span id="checkoutTotalDisplay">₹0</span>
-            </div>
-
             <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
                 <div class="checkout-form-group">
                     <label>Full Name</label>
@@ -680,6 +672,24 @@
                     <textarea id="chkAddress" class="checkout-input checkout-textarea" placeholder="House No., Street, City, State, Pincode" required minlength="10"></textarea>
                 </div>
                 
+                <!-- NEW: Delivery Options -->
+                <div class="checkout-form-group delivery-options-container">
+                    <label style="margin-bottom: 6px;">Select Delivery Method</label>
+                    <div class="delivery-option">
+                        <input type="radio" id="deliveryNormal" name="deliveryMethod" value="normal" checked onchange="updateDeliveryCost()">
+                        <label for="deliveryNormal">Normal Delivery (7 Days) - <span style="color: #007600;">Free</span></label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="deliveryFast" name="deliveryMethod" value="fast" onchange="updateDeliveryCost()">
+                        <label for="deliveryFast">Fast Delivery (3rd Day) - <span style="color: #CC0C39;">+₹50</span></label>
+                    </div>
+                </div>
+
+                <div class="checkout-summary">
+                    <span>Total Amount:</span>
+                    <span id="checkoutTotalDisplay">₹0</span>
+                </div>
+
                 <button type="submit" class="checkout-pay-btn" id="payBtn">
                     <span id="btnPayText"><i class="fa-solid fa-lock"></i> Buy Now / Pay Securely</span>
                     <div id="btnPayLoader" class="loader"></div>
@@ -792,7 +802,6 @@
             setTimeout(() => { 
                 grid.innerHTML = ''; 
                 
-                // Add the actual product
                 products.forEach(product => { 
                     const card = document.createElement('article'); 
                     card.className = 'product-card'; 
@@ -810,7 +819,6 @@
                     grid.appendChild(card); 
                 }); 
                 
-                // Add "Track Your Order" Card
                 const trackCard = document.createElement('article');
                 trackCard.className = 'product-card special-card';
                 trackCard.innerHTML = `
@@ -826,7 +834,6 @@
                 `;
                 grid.appendChild(trackCard);
 
-                // Add "Wellness Blog" Card
                 const blogCard = document.createElement('article');
                 blogCard.className = 'product-card special-card';
                 blogCard.innerHTML = `
@@ -1024,7 +1031,8 @@
         const RAZORPAY_KEY_ID = "rzp_live_SLy447saTnXqbZ";
 
         let checkoutMode = ''; 
-        let finalAmount = 0;
+        let baseAmount = 0; // Total sum of products without delivery cost
+        let finalAmount = 0; // Total amount to pay (product + delivery)
         let finalItemsDetails = '';
 
         window.openCheckout = function(mode) {
@@ -1034,15 +1042,19 @@
                     alert("Aapka bag abhi khali hai! Kripya items add karein.");
                     return;
                 }
-                finalAmount = cart.reduce((sum, item) => sum + (item.priceNum * item.qty), 0);
+                baseAmount = cart.reduce((sum, item) => sum + (item.priceNum * item.qty), 0);
                 finalItemsDetails = cart.map(i => `${i.name} (x${i.qty})`).join(", ");
                 closeCart(); 
             } else if(mode === 'buy_now') {
                 if(!currentModalProduct) return;
-                finalAmount = parseInt(currentModalProduct.price.replace(/[^0-9]/g, '')) * currentQty;
+                baseAmount = parseInt(currentModalProduct.price.replace(/[^0-9]/g, '')) * currentQty;
                 finalItemsDetails = `${currentModalProduct.name} (Qty: ${currentQty})`;
                 closeModal(); 
             }
+
+            // Reset delivery options to 'Normal Delivery' default whenever checkout opens
+            document.getElementById('deliveryNormal').checked = true;
+            finalAmount = baseAmount;
 
             document.getElementById('checkoutTotalDisplay').innerText = '₹' + finalAmount.toLocaleString('en-IN');
             document.getElementById('checkoutModalOverlay').classList.add('active');
@@ -1057,6 +1069,17 @@
         document.getElementById('checkoutModalOverlay').addEventListener('click', (e) => { 
             if(e.target === document.getElementById('checkoutModalOverlay')) closeCheckout(); 
         });
+
+        // Function triggered when delivery option changes
+        window.updateDeliveryCost = function() {
+            const isFastDelivery = document.getElementById('deliveryFast').checked;
+            if(isFastDelivery) {
+                finalAmount = baseAmount + 50;
+            } else {
+                finalAmount = baseAmount;
+            }
+            document.getElementById('checkoutTotalDisplay').innerText = '₹' + finalAmount.toLocaleString('en-IN');
+        };
 
         function showBtnLoader(show) {
             const btn = document.getElementById('payBtn');
@@ -1085,6 +1108,10 @@
             
             const totalQty = checkoutMode === 'cart' ? cart.reduce((sum, item) => sum + item.qty, 0) : currentQty;
 
+            // Delivery method string to save in sheet
+            const isFastDelivery = document.getElementById('deliveryFast').checked;
+            const deliveryMethodStr = isFastDelivery ? " | Delivery: Fast (3 Days, +₹50)" : " | Delivery: Normal (7 Days)";
+
             const orderData = {
                 action: 'createOrder',
                 orderId: uniqueOrderId,
@@ -1092,7 +1119,8 @@
                 phone: phone,
                 email: email,
                 address: address,
-                product: finalItemsDetails,
+                // Appended delivery method into the product field for admin visibility
+                product: finalItemsDetails + deliveryMethodStr,
                 qty: totalQty,
                 amount: finalAmount,
                 status: "Payment Pending",
